@@ -1,0 +1,49 @@
+<ion-icon slot="icon-only" name="close" class="closebutton" (click)="close()"></ion-icon>
+
+<div class="mainlayout">
+    <div *ngIf="!processing" class="statusbar">
+        <div class="trashbox">
+            <ion-icon name="trash-bin" [sortablejs]="deletedimages" [sortablejsOptions]="options"></ion-icon>
+            <div class="count">{{deletedimages.length}}</div>
+        </div>
+        <!-- <ion-icon name="move-outline"></ion-icon> -->
+        <!-- <ion-icon [class.disabled]="deletedimages.length === 0" class="refresh" name="refresh" (click)="reset()"></ion-icon> -->
+    </div>
+    <div *ngIf="processing" class="loading" >
+        <ion-spinner *ngIf="processing"></ion-spinner>
+    </div>
+    <!-- <div class="pics"
+            cdkDropList 
+            #useList="cdkDropList" 
+            [cdkDropListConnectedTo]="[doneList]" 
+            [cdkDropListData]="images"
+            (cdkDropListDropped)="drop($event)">
+        <div class="image" *ngFor="let image of images" cdkDrag [style.background-image]="image.style">
+        </div>
+    </div> -->
+    <div class="scroller">
+        <div class="pics" [sortablejs]="images" [sortablejsOptions]="options">
+            <div *ngFor="let image of images; let i = index">
+                <div class="image" style="background-size:cover;background-position: center;background-repeat: no-repeat;" [style.background-image]="imageMap.get(image).style"></div>
+            </div>
+            <div *ngIf="photo"><img [src]="photo"></div> 
+        </div>
+    </div>
+</div>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed" class="foo">
+    <ion-fab-button (click)="addNew()">
+        <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" class="foo">
+    <ion-fab-button (click)="reset()" [disabled]="!changed">
+        <ion-icon name="refresh"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" class="foo">
+    <ion-fab-button (click)="accept()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<input #fileinput multiple type="file" name="name" style="display: none;" accept="image/*" 
+  (change)="handleFiles($event)"/>

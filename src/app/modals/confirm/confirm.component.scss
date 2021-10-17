@@ -1,0 +1,10 @@
+div.popcontainer {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    div.text {
+        padding: 5px;
+        text-align: center;
+        font-size: 20px;
+    }
+}

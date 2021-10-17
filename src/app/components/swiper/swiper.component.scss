@@ -1,0 +1,204 @@
+ion-spinner {
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.layout {
+
+    width: 100%;
+    //height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    .mainwrapper {
+        width: 60vw;
+        height: 45vw;
+        .mainscroller {
+            overflow-x: hidden;
+            overflow-y: hidden;
+            white-space: nowrap;
+            width: 60vw;
+            height: 45vw;
+            position: relative;
+            pointer-events: none;
+            .frame {
+                    width: 60vw;
+                    height: 45vw;
+                    max-height: 45vw;
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 5px;
+                    //pointer-events: none;
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    object-fit: contain;
+                    max-height: 100%;
+                    max-width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    display: block;
+                    filter: drop-shadow(1px 1px 2px var(--ion-color-dark));
+                }
+            }
+            canvas {
+                position: absolute;
+                pointer-events: auto;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                //border: 2px solid green;
+                z-index:5;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: auto;
+                margin-bottom: auto;
+                display: block;
+                touch-action: none;
+            }
+        }
+        // .canvaswrapper {
+        //     padding: 5px;
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 100%;
+        //     height: 100%;
+
+        // }
+
+    }
+    .thumbwrapper {
+        position: absolute;
+        width: 100%;
+        //height: calc(45vw + 20px);
+        top: 25%;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 5px;
+        padding-right: 5px;
+        overflow: hidden;
+        .thumbslot {
+            //border: 1px solid pink;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .thumbslot.imageslot {
+            display: flex;
+            //align-items: center;
+        }
+        .thumbslot.imageslot.left {
+            align-items: flex-start;
+        }
+        .thumbslot.imageslot.right {
+            align-items: flex-end;
+        }
+        .thumbslot.progressslot {
+            display: flex;
+            align-items: flex-start;
+        }
+        .image {
+            width: 17vw;
+            height: 17vw;
+            background-size: cover;
+            //margin-bottom: 15px; // height of the progress container
+            filter: drop-shadow(1px 1px 2px var(--ion-color-dark));
+        }
+        .progress {
+            width: 60vw;
+            height: 30px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            color: var(--ion-color-primary);
+            height: 12px;
+            .bullet {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                border: 1px solid var(--ion-color-primary-deselect);
+                margin: 2px 1.5px 2px 1.5px;
+            }
+            .bullet.selected {
+                background: var(--ion-color-primary-deselect);
+            }
+            .bullet.marked {
+                border: 1px solid var(--ion-color-primary);
+            }
+            .bullet.selected.marked {
+                background: var(--ion-color-primary);
+            }
+        }
+        ion-icon.arrow {
+            //position: absolute;
+            font-size: 35px;
+            color: var(--ion-color-primary);
+            //filter: drop-shadow(0px 0px 5px white);
+            bottom: 18vh;
+        }
+        ion-icon.arrow.back {
+            left: 5px;
+        }
+        ion-icon.arrow.forward {
+            right: 5px;
+        }
+    }
+}
+
+.image {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (orientation: portrait) {
+    .layout {
+        .mainwrapper {
+            width: 100vw;
+            height: 75vw;
+            .mainscroller {
+                width: 100vw;
+                height: 75vw;
+                .frame {
+                    width: 100vw;
+                    height: 75vw;
+                    max-height: 75vw;
+                    .image {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        .thumbwrapper {
+            position: absolute;
+            width: 100%;
+            //height: calc(75vw + 31vw);
+            //height: 30vw;
+            //border: 1px solid pink;
+            top: calc(75vw + 10px);
+            .thumbslot.imageslot {
+                display: flex;
+                //align-items: flex-start;
+                .image {
+                    width: 30vw;
+                    height: 30vw;
+                }
+            }
+            .progress {
+                width: 30vw;
+            }
+        }  
+    }
+}

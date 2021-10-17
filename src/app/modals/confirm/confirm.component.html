@@ -1,0 +1,9 @@
+<div class="popcontainer">
+    <div class="text">
+      {{text}}
+    </div>
+    <!-- <div *ngFor="let option of options">{{option}}</div> -->
+    <ion-button *ngFor="let option of options" (click)="accept(option)">{{option}}</ion-button>
+  </div>
+  
+  

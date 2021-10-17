@@ -1,0 +1,98 @@
+div.bigbutton {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 5px;
+    border-radius: 50%;
+    background-color: var(--ion-color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.3);
+    // .elapsed {
+    //     position: absolute;
+    //     font-size: 0.75rem;
+    //     font-weight: bold;
+    //     color: var(--ion-color-primary-contrast);
+    //     top: auto;
+    //     bottom: 8px;
+    //   }
+    fa-icon {
+        color: var(--ion-color-primary-contrast);
+        font-size: 28px;
+    }
+}
+div.littlebutton {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--ion-color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.3);
+    fa-icon {
+        color: var(--ion-color-primary-contrast);
+        font-size: 18px;
+    }
+}
+// .littlebutton.disabled {
+//     //background-color: grey;
+//     background-color: var(--ion-color-primary-deselect);
+//     opacity: 0.5;
+// }
+.bigbutton.accept {
+    bottom: 120px;
+    right: 5px;
+}
+
+.bigbutton.record {
+    right: 5px;
+}
+.bigbutton.play {
+    left: 5px;
+}
+.bigbutton.play.playing {
+    background-color: green;
+}
+.bigbutton.record.recording {
+    background-color: red;
+}
+.bigbutton.disabled {
+    //background-color: grey;
+    background-color: var(--ion-color-primary-deselect);
+    opacity: 0.5;
+}
+.finishbutton {
+    bottom: 5px;
+}
+.labelbutton {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--ion-color-primary);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    filter:  drop-shadow(0px 0px 5px var(--ion-color-primary-contrast));
+    fa-icon {
+        color: var(--ion-background-color);
+        font-size: 24px;
+    }
+}
+.labelbutton.playing {
+    background-color: green;
+}
+.labelbutton.recording {
+    background-color: red;
+}
+
+@media (orientation: portrait) {
+    app-swiper {
+        margin-top: 35px;
+    }
+}

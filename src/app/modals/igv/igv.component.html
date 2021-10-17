@@ -1,0 +1,27 @@
+<ion-icon slot="icon-only" name="close" class="closebutton" (click)="close($event)"></ion-icon>
+<app-swiper [images]="session.imageIds" [enabled]="flags.canSlide" [reverse]="flags.canReverse"
+    [selected]="currentIndex" [highwater]="recordedMark" (move)="swiperMove($event)">
+</app-swiper>>
+
+<div class="bigbutton play ion-activatable"
+    [ngClass]="{'playing': flags.isReviewing, 'disabled': !flags.canReview, 'ion-activatable': flags.canReview}"
+    (click)="clickPlay()">
+    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    <fa-icon [icon]="flags.isReviewing ? faPause : faPlay"></fa-icon>
+    <!-- <div class="elapsed">{{elapsed}}</div> -->
+</div>
+
+<div class="bigbutton record ion-activatable"
+    [ngClass]="{'recording': flags.isRecording, 'disabled': !flags.canSlide, 'ion-activatable': flags.canPressRecord}"
+    (click)="clickRecord()">
+    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    <fa-icon [icon]="faSquare" [spin]="flags.isRecording"></fa-icon>
+    <!-- <div class="elapsed">{{elapsed}}</div> -->
+</div>
+
+<ion-fab *ngIf="flags.canFinish" class="finishbutton"  horizontal="center" vertical="bottom" (click)="finish()">
+    <ion-fab-button>
+        <ion-icon name="checkmark"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+ 

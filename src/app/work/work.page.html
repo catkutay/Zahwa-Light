@@ -1,0 +1,19 @@
+<div class="scroller">
+    <app-kitchen-snippet *ngFor="let session of ($sessionList | async)" 
+        [session]="session" 
+        [class.activated]="activated.has(session.id)"
+        (longpress)="longpress(session.id)">
+    </app-kitchen-snippet>
+</div>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" class="foo">
+    <ion-fab-button (click)="clickNew()">
+        <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<ion-fab *ngIf="showMenu" vertical="bottom" horizontal="center" slot="fixed" class="foo">
+    <ion-fab-button (click)="openActionSheet($event)">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<input #fileinput multiple type="file" name="name" style="display: none;" accept="image/*" 
+  (change)="handleFiles($event)"/>

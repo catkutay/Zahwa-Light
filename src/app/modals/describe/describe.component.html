@@ -1,0 +1,35 @@
+<ion-icon slot="icon-only" name="close" class="closebutton" (click)="close($event)"></ion-icon>
+<app-swiper [images]="session.imageIds" [enabled]="flags.canSlide" [reverse]="flags.canReverse"
+    [selected]="currentIndex" [highwater]="labelMark" (move)="swiperMove($event)">
+</app-swiper>
+
+<ion-fab *ngIf="flags.canFinish" class="finishbutton"  horizontal="center" vertical="bottom" (click)="finish()">
+    <ion-fab-button>
+        <ion-icon name="checkmark"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+ 
+<div *ngIf="flags.canAccept" class="bigbutton accept ion-activatable" (click)="acceptLabelRecording()">
+    <fa-icon [icon]="faCheck"></fa-icon>
+</div>
+
+<div class="bigbutton record ion-activatable"
+    (touchstart)="recdown($event)" (touchmove)="recmove($event)" (touchend)="recup($event)" (touchcancel)="recup($event)"
+    [ngClass]="{recording: flags.isRecording, disabled: !flags.canPressRecord}"
+    >
+    <fa-icon [icon]="faSquare" [spin]="flags.isRecording"></fa-icon>
+</div>
+
+<div class="bigbutton play ion-activatable"
+    (click)="play()"
+    [ngClass]="{playing: flags.isPlaying, disabled: !flags.canPlay}">
+    <fa-icon [icon]="flags.isPlaying ? faPause : faPlay"></fa-icon>
+</div>
+
+<!-- <div *ngIf="labelbutton"
+        [style.left]="labelbutton.left" [style.top]="labelbutton.top"
+        [ngClass]="labelbutton.cstring"
+        class="labelbutton"
+        (touchstart)="recdown($event)" (touchmove)="move($event)" (mouseup)="recup($event)" (touchend)="recup($event)" (touchcancel)="cancel($event)">
+    <fa-icon [icon]="labelbutton.icon"></fa-icon>
+</div> -->

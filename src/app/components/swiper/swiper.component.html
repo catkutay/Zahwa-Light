@@ -1,0 +1,32 @@
+<ion-spinner *ngIf="loading"></ion-spinner>
+<div class="layout">
+    <div class="mainwrapper">
+        <div #scroller class="mainscroller">
+            <div #frames *ngFor="let image of imageList; let i = index" class="frame">
+                <!-- <div class="image" [style.background-image]="image.style"></div> -->
+                <img #images [src]="image.src" />
+                <canvas #overlays [width]="image.width" [height]="image.height" [ngStyle]="cstyle[i]"></canvas>
+            </div>
+        </div>
+        <div class="thumbwrapper">
+            <div class="thumbslot imageslot left" (click)="clickThumb(-1)">
+                <div class="image"  [style.background-image]="thumbs.prev"></div>
+                <ion-icon *ngIf="reverse && (current !== 0)" name="arrow-back"
+                    class="arrow back"></ion-icon>
+            </div>
+            <div class="thumbslot progressslot">
+                <div class="progress">
+                    <div *ngFor="let i of progress">
+                        <div class="bullet" [ngClass]="{'selected': i === current, 'marked': i <= highwater}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="thumbslot imageslot right" (click)="clickThumb(1)">
+                <div class="image" [style.background-image]="thumbs.next"></div>
+                <ion-icon *ngIf="current !== (imageList.length - 1)" name="arrow-forward"
+                    class="arrow forward"></ion-icon>
+            </div>
+        </div>
+    </div>
+</div>
