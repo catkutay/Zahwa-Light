@@ -25,16 +25,16 @@
         <div class="pics" [sortablejs]="images" [sortablejsOptions]="options">
             <div *ngFor="let image of images; let i = index">
                 <div class="image" style="background-size:cover;background-position: center;background-repeat: no-repeat;" [style.background-image]="imageMap.get(image).style"></div>
-            </div>
-            <div *ngIf="photo"><img [src]="photo"></div> 
+            
         </div>
     </div>
 </div>
 <ion-fab vertical="bottom" horizontal="start" slot="fixed" class="foo">
     <ion-fab-button (click)="addNew()">
-        <ion-icon name="camera"></ion-icon>
+        <ion-icon name="image"></ion-icon>
     </ion-fab-button>
 </ion-fab>
+
 <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="foo">
     <ion-fab-button (click)="reset()" [disabled]="!changed">
         <ion-icon name="refresh"></ion-icon>

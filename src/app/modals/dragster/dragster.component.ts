@@ -125,6 +125,10 @@ export class DragsterComponent implements OnInit {
       this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath) ;
     }
     */
+    addNew() {
+        this.inputElement.nativeElement.click()
+    }
+
     accept() {
         // serialise to keep the order, remove ids because they will be generated when saved
         const imagearray = this.images.map((i) => {

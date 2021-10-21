@@ -26,7 +26,8 @@ export class Tab2Page implements OnInit {
   
   constructor(
     private platform: Platform,
-    private sanitizer: DomSanitizer, private photoService: PhotoService,
+    private sanitizer: DomSanitizer, 
+    private photoService: PhotoService,
     private sessions: SessionsService,
     private modalCtrl: ModalController,
     private tools: ToolsService,
