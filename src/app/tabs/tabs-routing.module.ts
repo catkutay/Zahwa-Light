@@ -7,6 +7,7 @@ const routes: Routes = [
     path: 'x',
     component: TabsPage,
     children: [
+
       {
         path: 'work',
         loadChildren: () => import('../work/work.module').then(m => m.WorkPageModule)

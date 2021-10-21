@@ -3,8 +3,8 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { DomSanitizer, SafeStyle, SafeResourceUrl } from '@angular/platform-browser';
 import { Options } from 'sortablejs';
 import { ModalController } from '@ionic/angular';
-import { Capacitor } from '@capacitor/core';
-import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+//import { Capacitor } from '@capacitor/core';
+//import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 
 interface ImageThumb {
     id?: string
@@ -47,11 +47,16 @@ export class DragsterComponent implements OnInit {
         }
     }
     imageMap: Map<string, ImageThumb> = new Map()
-    photo: SafeResourceUrl
+    //photo: SafeResourceUrl
 
     constructor(private tools: ToolsService, private sanitizer: DomSanitizer, private modalCtrl: ModalController) { }
 
     async ngOnInit() {
+        if (!this.files) {
+            throw new Error('Dragster files property requires FileList')
+        }
+        this.importPhotos(this.files)
+        /*
         if (!this.files) {
             throw new Error('Dragster files property requires FileList');
         }
@@ -61,7 +66,7 @@ export class DragsterComponent implements OnInit {
         
         else if(this.addNew){
             await this.addNew();
-        }
+        }*/
 
     }
 
@@ -101,7 +106,7 @@ export class DragsterComponent implements OnInit {
         }
         this.importPhotos(f.target.files)
     }
-
+/*
     async addNew() {
         if (!Capacitor.isPluginAvailable('Camera') ) {
             this.inputElement.nativeElement.click();
@@ -119,7 +124,7 @@ export class DragsterComponent implements OnInit {
   
       this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image.webPath) ;
     }
-    
+    */
     accept() {
         // serialise to keep the order, remove ids because they will be generated when saved
         const imagearray = this.images.map((i) => {
