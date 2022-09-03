@@ -1,0 +1,11 @@
+This is a guesture system to add audio and guestures to photos
+
+1. Run 
+npm install -g ionic
+2. Pull from repository 
+3. Run 
+npm install
+ to install modules
+4. unzip gestate.zip under node-modules to override module
+5. Run ionic server
+6. There may still be an error, but hope removed
